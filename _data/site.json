@@ -1,0 +1,29 @@
+{
+  "slug": "sk-deepparadise",
+  "nazev": "Deep Paradise, s.r.o. – Potápačský obchod",
+  "url": "https://webhunter-navrhy.github.io/sk-deepparadise/",
+  "base": "/sk-deepparadise/",
+  "lang": "sk",
+  "popis": "Potápačský obchod Deep Paradise: automatiky, obleky, svetlá, krídla, masky a ďalšie potápačské vybavenie. Poradíme, ako skutoční potápači.",
+  "navrh": true,
+  "domena": "",
+  "og_image": "p8572.jpg",
+  "logo": "logo.png",
+  "theme_color": "#2d2d41",
+  "typ": "Store",
+  "ico": "44102518",
+  "kontakt": {
+    "email": "info@potapacskyobchod.sk",
+    "telefon": "0948 84 0948",
+    "adresa": {"ulice": "Dunajský Klátov 251", "psc": "930 21", "mesto": "Dunajský Klátov", "zeme": "SK"}
+  },
+  "oteviraci_doba": [],
+  "sameas": [],
+  "cenove_rozpeti": "",
+  "formular": {"endpoint": "", "demo": true, "predmet": "Dopyt z e-shopu"},
+  "nav": [
+    {"text": "Produkty", "href": "#produkty"},
+    {"text": "Prečo u nás", "href": "#preco"},
+    {"text": "Kontakt", "href": "#kontakt"}
+  ]
+}

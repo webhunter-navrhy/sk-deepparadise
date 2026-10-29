@@ -1,0 +1,86 @@
+[
+ {
+  "nazov": "Potápačské doplnky",
+  "slug": "potapacske-doplnky-buvarkiegeszitok",
+  "pocet": 6,
+  "foto": "p8549.jpg",
+  "kratky": "Doplnky"
+ },
+ {
+  "nazov": "Automatiky-regulátory tlaku",
+  "slug": "plucne-automatiky-reduktorok",
+  "pocet": 6,
+  "foto": "p8548.jpg",
+  "kratky": "Automatiky-regulátory tlaku"
+ },
+ {
+  "nazov": "Potápačské svetlá",
+  "slug": "potapacske-svetla-buvarlampak",
+  "pocet": 6,
+  "foto": "p8429.jpg",
+  "kratky": "Svetlá"
+ },
+ {
+  "nazov": "Potápačské krídlo pre twin",
+  "slug": "potapacske-kridlo-pre-dvojca-wing-dupla-palack",
+  "pocet": 6,
+  "foto": "p7616.jpg",
+  "kratky": "Krídlo pre twin"
+ },
+ {
+  "nazov": "Potápačské obleky-mokré",
+  "slug": "mokre-potapacske-obleky-nedves-buvarruha",
+  "pocet": 6,
+  "foto": "p8028.jpg",
+  "kratky": "Obleky-mokré"
+ },
+ {
+  "nazov": "Potápačské krídlo pre mono",
+  "slug": "potapacske-kridlo-buvarwing",
+  "pocet": 5,
+  "foto": "p8443.jpg",
+  "kratky": "Krídlo pre mono"
+ },
+ {
+  "nazov": "Meracie prístroje",
+  "slug": "meracie-pristroje-mero-eszkoz",
+  "pocet": 6,
+  "foto": "p8572.jpg",
+  "kratky": "Meracie prístroje"
+ },
+ {
+  "nazov": "Potápačské hadice",
+  "slug": "potapacske-hadice-buvartomlok",
+  "pocet": 6,
+  "foto": "p6561.jpg",
+  "kratky": "Hadice"
+ },
+ {
+  "nazov": "SEALIFE",
+  "slug": "sealife",
+  "pocet": 4,
+  "foto": "p8437.jpg",
+  "kratky": "Sealife"
+ },
+ {
+  "nazov": "Potápačské masky",
+  "slug": "potapacske-masky-buvarmaszkok",
+  "pocet": 6,
+  "foto": "p8160.jpg",
+  "kratky": "Masky"
+ },
+ {
+  "nazov": "Potápačské rukavice",
+  "slug": "rukavice-pre-potapacov-buvarkesztyu",
+  "pocet": 6,
+  "foto": "p8313.jpg",
+  "kratky": "Rukavice"
+ },
+ {
+  "nazov": "Plutvy",
+  "slug": "plutvy-uszony",
+  "pocet": 6,
+  "foto": "p7873.jpg",
+  "kratky": "Plutvy"
+ }
+]

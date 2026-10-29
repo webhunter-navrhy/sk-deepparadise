@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="{{ site.lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ titulek or site.nazev }}</title>
+<meta name="description" content="{{ popis or site.popis }}">
+{% if site.navrh or noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
+<meta name="theme-color" content="{{ site.theme_color }}">
+<link rel="canonical" href="{{ site.url }}{{ cesta or '' }}">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="sk_SK">
+<meta property="og:title" content="{{ titulek or site.nazev }}">
+<meta property="og:description" content="{{ popis or site.popis }}">
+<meta property="og:url" content="{{ site.url }}{{ cesta or '' }}">
+{% if og_url %}<meta property="og:image" content="{{ og_url }}">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">{% endif %}
+<link rel="icon" href="{{ base }}logo.png">
+<link rel="preload" href="{{ base }}fonts/sora-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+{% if jsonld %}<script type="application/ld+json">{{ jsonld|safe }}</script>{% endif %}
+</head>
+<body>
+<a class="skip" href="#obsah">Preskočiť na obsah</a>
+<header class="hlavicka">
+  <div class="wrap hl">
+    <a href="{{ url('') }}" class="logo" aria-label="{{ site.nazev }}">
+      <img src="{{ base }}{{ site.logo }}" alt="" width="46" height="46">
+      <span><b>Deep Paradise</b><small>Potápačský obchod</small></span>
+    </a>
+    <form class="hladat" role="search" data-hladat>
+      <label class="vh" for="q">Hľadať v produktoch</label>
+      <input id="q" type="search" placeholder="Hľadať: automatika, maska, svetlo…" autocomplete="off">
+    </form>
+    <nav aria-label="Hlavné">
+      {% for n in site.nav %}<a href="{{ n.href }}">{{ n.text }}</a>{% endfor %}
+    </nav>
+    <button class="kosik-tl" type="button" data-kosik-otvor aria-label="Košík">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M3 4h2.2l2.3 11h10.2l2-8H6.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="19.2" r="1.4" fill="currentColor"/><circle cx="16.5" cy="19.2" r="1.4" fill="currentColor"/></svg>
+      <span class="kosik-pocet" data-kosik-pocet>0</span>
+    </button>
+  </div>
+</header>
+<main id="obsah">
+{% block obsah %}{% endblock %}
+</main>
+<footer class="paticka">
+  <div class="wrap">
+    <div>
+      <p class="pt-nazov">Deep Paradise, s.r.o.</p>
+      <p>{{ site.kontakt.adresa.ulice }}, {{ site.kontakt.adresa.psc }} {{ site.kontakt.adresa.mesto }}<br>IČO {{ site.ico }}</p>
+    </div>
+    <div>
+      <p><a href="mailto:{{ site.kontakt.email }}">{{ site.kontakt.email }}</a><br><a href="tel:{{ site.kontakt.telefon|replace(' ', '') }}">{{ site.kontakt.telefon }}</a></p>
+    </div>
+    <p class="pt-male">Ukážka nového vzhľadu e-shopu. Produkty a ceny sú prevzaté zo súčasného webu potapacskyobchod.sk.</p>
+  </div>
+</footer>
+
+<div class="zastor" data-zastor hidden></div>
+<aside class="kosik" data-kosik hidden aria-label="Košík" role="dialog">
+  <div class="kosik-hl"><h2>Váš košík</h2><button type="button" data-zavri aria-label="Zavrieť">✕</button></div>
+  <ul class="kosik-pol" data-kosik-pol></ul>
+  <p class="kosik-prazdny" data-kosik-prazdny>Košík je zatiaľ prázdny.</p>
+  <div class="kosik-pata" data-kosik-pata hidden>
+    <p class="kosik-sum"><span>Spolu</span><b data-kosik-spolu></b></p>
+    <button type="button" class="tl tl-hl" data-objednat>Pokračovať k objednávke</button>
+    <p class="demo-poz" data-demo-poz hidden>Ukážka: objednávka sa neodosiela. V ostrom e-shope sa tu vyplní doručenie a platba.</p>
+  </div>
+</aside>
+
+<div class="detail" data-detail hidden role="dialog" aria-modal="true" aria-label="Detail produktu">
+  <div class="detail-okno">
+    <button type="button" class="detail-x" data-zavri aria-label="Zavrieť">✕</button>
+    <div class="detail-obr"><img alt="" data-d-obr></div>
+    <div class="detail-txt">
+      <p class="kat" data-d-kat></p>
+      <h3 data-d-nazov></h3>
+      <p class="d-popis" data-d-popis></p>
+      <p class="cena" data-d-cena></p>
+      <button type="button" class="tl tl-hl" data-d-pridat>Pridať do košíka</button>
+    </div>
+  </div>
+</div>
+
+<div class="hlbkomer" aria-hidden="true"><span data-hlbka>0</span><small>m</small></div>
+{% if data.produkty %}<script>window.__POPISY = { {% for p in data.produkty %}"{{ p.id }}": {{ p.popis|tojson }}{{ "," if not loop.last }}{% endfor %} };</script>{% endif %}
+<script src="{{ asset('js/main.js') }}" defer></script>
+</body>
+</html>

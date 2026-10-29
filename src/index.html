@@ -1,0 +1,78 @@
+{% extends "_base.html" %}
+{% set titulek = 'Potápačský obchod Deep Paradise – potápačské vybavenie online' %}
+{% set cesta = '' %}
+{% block obsah %}
+<section class="hero" id="hladina">
+  <div class="wrap hero-g">
+    <div class="hero-txt">
+      <p class="nadpis-mini">Potápačský obchod</p>
+      <h1>Výstroj od ľudí, ktorí sa sami potápajú</h1>
+      <p class="uvod">Automatiky, obleky, svetlá, krídla, masky a doplnky pre rekreačných aj technických potápačov. Objednajte online alebo sa zastavte na predajni.</p>
+      <p class="hero-tl"><a class="tl tl-hl" href="#produkty">Pozrieť produkty</a><a class="tl tl-duch" href="#preco">Prečo u nás</a></p>
+    </div>
+    <div class="hero-obraz" aria-hidden="true">
+      {% for id in [8337, 8160, 8421] %}{% set p = data.produkty|selectattr('id','equalto',id)|first %}{{ img(p.obrazok, '', sizes='(min-width: 60rem) 24vw, 42vw', cls='ho ho' ~ loop.index) }}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="sekcia sv" id="produkty">
+  <div class="wrap">
+    <div class="sek-hl"><p class="nadpis-mini">Ponuka</p><h2>Produkty</h2></div>
+    <ul class="dlazdice" role="list">
+      {% for k in data.kategorie[:8] %}<li><button type="button" data-kat-dl="{{ k.slug }}">{{ img(k.foto, '', sizes='140px') }}<b>{{ k.kratky }}</b><small>{{ k.pocet }} produktov</small></button></li>{% endfor %}
+    </ul>
+    <div class="chipy" role="group" aria-label="Kategórie" data-chipy>
+      <button type="button" class="chip on" data-kat="">Všetko</button>
+      {% for k in data.kategorie %}<button type="button" class="chip" data-kat="{{ k.slug }}">{{ k.kratky }}</button>{% endfor %}
+    </div>
+    <p class="vysl" data-vysl aria-live="polite"></p>
+    <ul class="mriezka" role="list" data-mriezka>
+      {% for p in data.produkty %}
+      <li class="karta" data-id="{{ p.id }}" data-kat="{{ p.kat_slug }}" {% if p.top %}data-top {% endif %}data-hlad="{{ (p.nazov ~ ' ' ~ p.kat)|lower }}">
+        <button type="button" class="karta-obr" data-otvor="{{ p.id }}" aria-label="Detail: {{ p.nazov }}">{{ img(p.obrazok, p.nazov, sizes='(min-width: 60rem) 22vw, (min-width: 40rem) 30vw, 46vw') }}</button>
+        <div class="karta-tx">
+          <p class="kat">{{ p.kat }}</p>
+          <h3>{{ p.nazov }}</h3>
+          <p class="cena">{% if p.povodna %}<s>{{ '%.0f'|format(p.povodna) }} €</s> {% endif %}{{ '%.0f'|format(p.cena) }} €</p>
+        </div>
+        <button type="button" class="tl tl-mal" data-pridat="{{ p.id }}">Do košíka</button>
+      </li>
+      {% endfor %}
+    </ul>
+    <p class="vsetko"><button type="button" class="tl tl-hl" data-vsetko>Zobraziť celú ponuku ({{ data.produkty|length }})</button></p>
+    <p class="poz-nic" data-nic hidden>Nič sme nenašli. Skúste iný výraz alebo kategóriu.</p>
+    <p class="poz-ukaz">V ukážke je výber z ponuky. Ostrý e-shop bude obsahovať celý sortiment.</p>
+  </div>
+</section>
+
+<section class="sekcia tm" id="preco">
+  <div class="wrap">
+    <div class="sek-hl"><p class="nadpis-mini">Prečo nakupovať u nás</p><h2>Poradíme tak, ako by sme radili sami sebe</h2></div>
+    <ul class="body" role="list">
+      <li><b>Skutoční potápači</b><span>Potápame sa v rôznych podmienkach po svete a tovar, ktorý predávame, je podľa našich skúseností dobrej kvality.</span></li>
+      <li><b>Poctivé rady</b><span>Nikomu neodporúčame drahú, nepraktickú vec, ktorú ani nevyužije.</span></li>
+      <li><b>Rozumné ceny</b><span>Nie sme najlacnejší, ale zďaleka ani najdrahší. Ponúkame širokú škálu produktov od rôznych výrobcov.</span></li>
+      <li><b>Spokojný zákazník na prvom mieste</b><span>O možných meškaniach a komplikáciách vás informujeme aj počas dodania a navrhneme riešenie.</span></li>
+      <li><b>Predajňa</b><span>Kedykoľvek sa môžete zastaviť a poradiť sa o produktoch osobne.</span></li>
+    </ul>
+    <p class="tip">Pred cestou odporúčame informovať sa o tovare aspoň 1 – 2 týždne vopred. Dostupnosť si radi overíme pred objednávkou.</p>
+  </div>
+</section>
+
+<section class="sekcia tm2" id="kontakt">
+  <div class="wrap kontakt-g">
+    <div>
+      <p class="nadpis-mini">Kontakt</p>
+      <h2>Napíšte nám alebo sa zastavte</h2>
+      <address>
+        <b>Deep Paradise, s.r.o.</b><br>
+        {{ site.kontakt.adresa.ulice }}<br>{{ site.kontakt.adresa.psc }} {{ site.kontakt.adresa.mesto }}<br><br>
+        <a href="tel:{{ site.kontakt.telefon|replace(' ', '') }}">{{ site.kontakt.telefon }}</a><br>
+        <a href="mailto:{{ site.kontakt.email }}">{{ site.kontakt.email }}</a>
+      </address>
+    </div>
+    {% include "_formular.html" %}
+  </div>
+</section>
+{% endblock %}

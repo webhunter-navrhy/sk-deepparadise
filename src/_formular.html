@@ -1,0 +1,10 @@
+<form class="formular" method="post" {% if site.formular.endpoint and not site.formular.demo %}action="{{ site.formular.endpoint }}"{% endif %} data-endpoint="{{ site.formular.endpoint }}" data-demo="{{ 1 if site.formular.demo or not site.formular.endpoint else 0 }}">
+  <label>Meno <input name="meno" autocomplete="name" required></label>
+  <label>E-mail <input name="email" type="email" autocomplete="email" required></label>
+  <label>Telefón <input name="telefon" type="tel" autocomplete="tel"></label>
+  <label>Správa <textarea name="sprava" rows="4" required></textarea></label>
+  <div class="past" aria-hidden="true"><label>Nevypĺňať <input name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+  <input type="hidden" name="_subject" value="{{ site.formular.predmet }}">
+  <button type="submit" class="tl tl-hl">Odoslať</button>
+  <p class="formular-stav" role="status" aria-live="polite"></p>
+</form>
